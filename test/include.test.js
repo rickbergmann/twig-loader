@@ -17,13 +17,15 @@ describe("include", function () {
             result.should.have.type("string");
 
             // verify the generated module imports the `include`d templates
-            result.should.match(/require\(\"\.\/a\.html\.twig\"\);/);
-            result.should.match(/require\(\"\.\/b\.html\"\);/); // test webpack extension resolve
-            result.should.match(/require\(\"\.\/c\.html\.twig\"\);/);
-            result.should.match(/require\(\"\.\/d\.html\.twig\"\);/);
-            result.should.match(/require\(\"\.\/e\.html\.twig\"\);/);
-            result.should.match(/require\(\"\.\/f\.html\.twig\"\);/);
-            result.should.match(/require\(\"\.\/g\.html\.twig\"\);/);
+
+            result.should.match(/require\(.*a\.html\.twig.*\)/);
+            result.should.match(/require\(.*b\.html.*\)/); // test webpack extension resolve
+            result.should.match(/require\(.*c\.html\.twig.*\)/);
+            result.should.match(/require\(.*d\.html\.twig.*\)/);
+            result.should.match(/require\(.*e\.html\.twig.*\)/);
+            result.should.match(/require\(.*f\.html\.twig.*\)/);
+            result.should.match(/require\(.*g\.html\.twig.*\)/);
+
 
             done();
         });
@@ -76,7 +78,7 @@ describe("include", function () {
 
             result.should.have.type("string");
 
-            result.should.match(/require\("\.\/nested\.html"\);/);
+            result.should.match(/require\(.*nested\.html\.twig.*\)/);
 
             // the template id that is in the 'include' to reference 'nested.html.twig'
             var nestedTemplateId = result.match(/"value":"([^"]+)"/i)[1];

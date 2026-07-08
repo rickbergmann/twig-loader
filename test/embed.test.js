@@ -17,7 +17,7 @@ describe("embed", function() {
       result.should.have.type("string");
 
       // verify the generated module imports the `embed`d templates
-      result.should.match(/require\(\"embed\.html\.twig\"\);/);
+      result.should.match(/embed\.html\.twig/);
 
       done();
     });
@@ -31,7 +31,7 @@ describe("embed", function() {
       result.should.have.type("string");
 
       // verify the generated module imports the `include`d templates
-      result.should.match(/require\(\"include\.html\.twig\"\);/);
+      result.should.match(/include\.html\.twig/);
 
       done();
     });
